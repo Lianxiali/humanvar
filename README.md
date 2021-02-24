@@ -47,7 +47,6 @@ We will now tackle a small data set of allele frequency variation among 26 globa
 	5 CEU 62.28      EUR 39.3210 -111.0937 Utah_Resid_from_NWEurope    15 48426484         2   198 1.000000 0.000000
 	
 > freq[,1:5]
-
 	   pop  dist superpop     lat      long
 	1  ACB 13.19      AFR 13.1776  -59.5412
 	2  ASW -8.78      AFR 36.1070 -112.1130
@@ -104,10 +103,11 @@ We will now tackle a small data set of allele frequency variation among 26 globa
 > hist(freq$Allele_A)
 ```
 ![Histogram of freq Allele_A](plots/Histogram_freq_Allele_A.jpg)
+
 ```
 > hist(freq$Allele_A, breaks=20)
 ```
-![Histogram of freq$Allele_A_Breaks](plots/Histogram_freq_Allele_A_Breaks.jpg)
+![Histogram of freq Allele_A_Breaks](plots/Histogram_freq_Allele_A_Breaks.jpg)
 
 ```
 > plot(freq$Allele_A, freq$lat)
@@ -120,10 +120,7 @@ plot(freq$Allele_A, freq$lat, xlab="f(A) rs1426654",
 ```
 ![Scatterplots_freqAllel_A_lat_PCH_COLOR.jpg](plots/Scatterplots_PCH_COLOR.jpg)
 
-Assigning a different color to each of the 26 populations makes things messy. There is no real pattern obvious here. But what happens if you instead assign colors by super population? Recall that the regional subpopulations are grouped into 5 global superpopulations.
-![Scatterplots_freqAllel_A_lat_PCH_COLOR_ARRAY](plots/Scatterplots_PCH_COLOR_ARRAY.jpg)
-
-This looks a lot better. Now some pattern is evident in the change of allele frequency across super populations. But we still do not know which color goes with what population, though you can probably figure the continent out by looking at the latitude. One way to make this connection is to write a legend within the plot itself. This is easy to do in R. We will also add a main title for the plot.
+We will add a main title for the plot.
 
 ```
 > plot(freq$Allele_A, freq$lat, xlab="f(A) rs1426654", ylab="Latitude", 
@@ -132,7 +129,7 @@ This looks a lot better. Now some pattern is evident in the change of allele fre
         cex=0.8, col=c('red','blue','darkgreen','salmon','black'), pch=16, inset=0.02)
 > title(main="Latitudinal Variation in f(A) at rs1426654 among 26 Human Populations", cex.main=1)
 ```
-![Scatterplots_PCH_COLOR_Legend](plots/Scatterplots_PCH_COLOR_Legend.jpg)
+![Scatterplots PCH COLOR Legend](plots/Scatterplots_PCH_COLOR_Legend.jpeg)
 
 #3. Plotting Data on Geographical Maps
 ##3.1 Install/Load Packages
@@ -152,7 +149,7 @@ This looks a lot better. Now some pattern is evident in the change of allele fre
 > map('worldHires', xlim=c(-120,142), ylim=c(-12,72), col='gray', fill=FALSE)
 > box()
 
-![World Map Empty](plots/World_Map_Empty.jpg)
+![World Map Empty](plots/World_Map_Empty.jpeg)
 
 # 3.3 Plot Human Populations
 We will plot the 26 human populations on this map using the geographical coordinates available to us.
@@ -161,7 +158,7 @@ We will plot the 26 human populations on this map using the geographical coordin
 > points(freq$long, freq$lat, pch=16, col="salmon")
 > box()
 ```
-![World_Map_Population](World_Map_Population.jpg)
+![World_Map_Population](World_Map_Population.jpeg)
 
 # 3.4 Adjust Point Size
 We could make this plot more informative if we linked the point size to allele frequency.
@@ -170,7 +167,7 @@ We could make this plot more informative if we linked the point size to allele f
 > points(freq$long, freq$lat, pch=16, cex=freq$Allele_A*1.5, col="Green")
 > box()
 ```
-![World_Map_Population_PointSize](plots/World_Map_Population_PointSize.jpg)
+![World_Map_Population_PointSize](plots/World_Map_Population_PointSize.jpeg)
 
 # 3.5 Using Pie Charts to Display Relative Allele Frequencies
 This would perhaps be the best way to depict our data on the map, because it will show relative frequencies of both alleles at every given geographical position (i.e. population).
@@ -181,7 +178,7 @@ First, let’s just draw one pie to see how it works. We can then apply the same
 > add.pie(z=c(0.104, 0.895), x=-59.5412, y=13.1776, radius=192/100, col=c(alpha("orange", 0.6), alpha("blue", 0.6)), labels="")
 > box()
 ```
-![World_Map_Pie](/plots/World_Map_Pie.jpg)
+![World_Map_Pie](/plots/World_Map_Pie.jpeg)
 
 # 3.6 Plot All Pie Charts Using `for{}` Loop
 In order to plot one pie chart per population of data, what we need to do essentially is to cycle through the code above for each row of our data frame `freq.df`. 
