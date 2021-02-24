@@ -5,7 +5,6 @@ We will now tackle a small data set of allele frequency variation among 26 globa
 ## 2.1 Import `freq.df` Allele Frequency Data
 ```
 > getwd()
-
 	[1] "C:/Users/lianx/Drives/E/work/Courses/2021Spring/BeyondBenchMOLB-5700/r4grads"
 
 > options(width=150)
@@ -13,7 +12,6 @@ We will now tackle a small data set of allele frequency variation among 26 globa
 > freq <- read.table('freq.df', header=T)
 
 > head(freq)
-
 	pop  dist superpop     lat      long                  popname CHROM      POS N_ALLELES N_CHR  Allele_A Allele_G
 	1 ACB 13.19      AFR 13.1776  -59.5412       African_Carib_BBDS    15 48426484         2   192 0.1041670 0.895833
 	2 ASW -8.78      AFR 36.1070 -112.1130  African_Ancestry_SW_USA    15 48426484         2   122 0.1885250 0.811475
@@ -23,7 +21,6 @@ We will now tackle a small data set of allele frequency variation among 26 globa
 	6 CHB 23.13      EAS 39.9042  116.4074              Han_Chinese    15 48426484         2   206 0.0291262 0.970874
 
 > tail(freq)
-
 	pop  dist superpop     lat     long               popname CHROM      POS N_ALLELES N_CHR  Allele_A  Allele_G
 	21 PEL -9.19      AMR -9.1900 -75.0152              Peruvian    15 48426484         2   170 0.2823530 0.7176470
 	22 PJL 31.55      SAS 31.5546  74.3572        Punjabi_Lahore    15 48426484         2   192 0.7812500 0.2187500
@@ -33,18 +30,15 @@ We will now tackle a small data set of allele frequency variation among 26 globa
 	26 YRI 10.16      AFR  7.3775   3.9470 Yoruba_Ibadan_Nigeria    15 48426484         2   216 0.0138889 0.9861110
 
 > names(freq)
-
- [1] "pop"       "dist"      "superpop"  "lat"       "long"      "popname"   "CHROM"     "POS"       "N_ALLELES" "N_CHR"     "Allele_A"  "Allele_G" 
+	[1] "pop"       "dist"      "superpop"  "lat"       "long"      "popname"   "CHROM"     "POS"       "N_ALLELES" "N_CHR"     "Allele_A"  "Allele_G" 
 
 > dim(freq)
-
-[1] 26 12
+	[1] 26 12
 ```
 
 ## 2.2 Accessing Rows and Columns
 ```
-freq[1:5,]
-
+> freq[1:5,]
 	pop  dist superpop     lat      long                  popname CHROM      POS N_ALLELES N_CHR Allele_A Allele_G
 	1 ACB 13.19      AFR 13.1776  -59.5412       African_Carib_BBDS    15 48426484         2   192 0.104167 0.895833
 	2 ASW -8.78      AFR 36.1070 -112.1130  African_Ancestry_SW_USA    15 48426484         2   122 0.188525 0.811475
@@ -83,7 +77,6 @@ freq[1:5,]
 	26 YRI 10.16      AFR  7.3775    3.9470
 
 > freq[1:5, 1:5]
-
 	  pop  dist superpop     lat      long
 	1 ACB 13.19      AFR 13.1776  -59.5412
 	2 ASW -8.78      AFR 36.1070 -112.1130
@@ -98,9 +91,9 @@ freq[1:5,]
 > range(freq$long)
 	
 > summary(freq$Allele_A)
-
 	Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 	0.00000 0.04065 0.38382 0.43479 0.77825 1.00000 
+	
 > summary(freq$N_CHR)
 	Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 	122.0   186.5   198.0   192.6   207.5   226.0
@@ -110,11 +103,11 @@ freq[1:5,]
 ```
 > hist(freq$Allele_A)
 ```
-![Histogram of freq$Allele_A](plots/Histogram of freq$Allele_A.jpg)
+![Histogram of freq Allele_A](plots/Histogram_freq_Allele_A.jpg)
 ```
 > hist(freq$Allele_A, breaks=20)
 ```
-![Histogram of freq$Allele_A_Breaks](plots/Histogram of freq$Allele_A_Breaks.jpg)
+![Histogram of freq$Allele_A_Breaks](plots/Histogram_freq_Allele_A_Breaks.jpg)
 
 ```
 > plot(freq$Allele_A, freq$lat)
@@ -122,12 +115,13 @@ freq[1:5,]
 ![Scatterplots_freqAllel_A_lat](plots/Scatterplots_freqAllel_A_lat.jpg)
 
 ```
-plot(freq$Allele_A, freq$lat, xlab="f(A) rs1426654",         ylab="Latitude", pch=16, cex=0.8, col=freq$lat+10, xlim=c(0,1))
+plot(freq$Allele_A, freq$lat, xlab="f(A) rs1426654", 
+     ylab="Latitude", pch=16, cex=0.8, col=freq$lat+10, xlim=c(0,1))
 ```
-![Scatterplots_freqAllel_A_lat_PCH_COLOR.jpg](plots/Scatterplots_freqAllel_A_lat_PCH_COLOR.jpg)
+![Scatterplots_freqAllel_A_lat_PCH_COLOR.jpg](plots/Scatterplots_PCH_COLOR.jpg)
 
 Assigning a different color to each of the 26 populations makes things messy. There is no real pattern obvious here. But what happens if you instead assign colors by super population? Recall that the regional subpopulations are grouped into 5 global superpopulations.
-![Scatterplots_freqAllel_A_lat_PCH_COLOR_ARRAY](plots/Scatterplots_freqAllel_A_lat_PCH_COLOR1.jpg)
+![Scatterplots_freqAllel_A_lat_PCH_COLOR_ARRAY](plots/Scatterplots_PCH_COLOR1.jpg)
 
 This looks a lot better. Now some pattern is evident in the change of allele frequency across super populations. But we still do not know which color goes with what population, though you can probably figure the continent out by looking at the latitude. One way to make this connection is to write a legend within the plot itself. This is easy to do in R. We will also add a main title for the plot.
 
@@ -138,7 +132,7 @@ This looks a lot better. Now some pattern is evident in the change of allele fre
         cex=0.8, col=c('red','blue','darkgreen','salmon','black'), pch=16, inset=0.02)
 > title(main="Latitudinal Variation in f(A) at rs1426654 among 26 Human Populations", cex.main=1)
 ```
-![Scatterplots_freqAllel_A_lat_PCH_COLOR_Lengend.jpg](plots/Scatterplots_freqAllel_A_lat_PCH_COLOR_Lengend.jpg)
+![Scatterplots_PCH_COLOR_Legend.jpg](plots/Scatterplots_PCH_COLOR_Legend.jpg)
 
 #3. Plotting Data on Geographical Maps
 ##3.1 Install/Load Packages
