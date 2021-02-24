@@ -121,7 +121,7 @@ plot(freq$Allele_A, freq$lat, xlab="f(A) rs1426654",
 ![Scatterplots_freqAllel_A_lat_PCH_COLOR.jpg](plots/Scatterplots_PCH_COLOR.jpg)
 
 Assigning a different color to each of the 26 populations makes things messy. There is no real pattern obvious here. But what happens if you instead assign colors by super population? Recall that the regional subpopulations are grouped into 5 global superpopulations.
-![Scatterplots_freqAllel_A_lat_PCH_COLOR_ARRAY](plots/Scatterplots_PCH_COLOR1.jpg)
+![Scatterplots_freqAllel_A_lat_PCH_COLOR_ARRAY](plots/Scatterplots_PCH_COLOR_ARRAY.jpg)
 
 This looks a lot better. Now some pattern is evident in the change of allele frequency across super populations. But we still do not know which color goes with what population, though you can probably figure the continent out by looking at the latitude. One way to make this connection is to write a legend within the plot itself. This is easy to do in R. We will also add a main title for the plot.
 
@@ -132,7 +132,7 @@ This looks a lot better. Now some pattern is evident in the change of allele fre
         cex=0.8, col=c('red','blue','darkgreen','salmon','black'), pch=16, inset=0.02)
 > title(main="Latitudinal Variation in f(A) at rs1426654 among 26 Human Populations", cex.main=1)
 ```
-![Scatterplots_PCH_COLOR_Legend.jpg](plots/Scatterplots_PCH_COLOR_Legend.jpg)
+![Scatterplots_PCH_COLOR_Legend](plots/Scatterplots_PCH_COLOR_Legend.jpg)
 
 #3. Plotting Data on Geographical Maps
 ##3.1 Install/Load Packages
@@ -150,8 +150,9 @@ This looks a lot better. Now some pattern is evident in the change of allele fre
 3.2 Draw World Map Layer
 ```
 > map('worldHires', xlim=c(-120,142), ylim=c(-12,72), col='gray', fill=FALSE)
-> bix()
-![World_Map_Empty](plots/World_Map_Empty.jpg)
+> box()
+
+![World Map Empty](plots/World_Map_Empty.jpg)
 
 # 3.3 Plot Human Populations
 We will plot the 26 human populations on this map using the geographical coordinates available to us.
