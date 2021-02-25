@@ -151,7 +151,7 @@ We will add a main title for the plot.
 ```
 ![World Map Empty](plots/World_Map_Empty.jpeg)
 
-# 3.3 Plot Human Populations
+## 3.3 Plot Human Populations
 We will plot the 26 human populations on this map using the geographical coordinates available to us.
 ```
 > map('worldHires', xlim=c(-120,142), ylim=c(-12,72), col='gray', fill=FALSE)
@@ -160,7 +160,7 @@ We will plot the 26 human populations on this map using the geographical coordin
 ```
 <img src="plots/World_Map_Populations.jpeg" width="600" height="250">
 
-# 3.4 Adjust Point Size
+## 3.4 Adjust Point Size
 We could make this plot more informative if we linked the point size to allele frequency.
 ```
 > map('worldHires', xlim=c(-120,142), ylim=c(-12,72), col='gray', fill=FALSE)
@@ -169,7 +169,7 @@ We could make this plot more informative if we linked the point size to allele f
 ```
 ![World_Map_Population_PointSize](plots/World_Map_Populations_PointSize.jpeg)
 
-# 3.5 Using Pie Charts to Display Relative Allele Frequencies
+## 3.5 Using Pie Charts to Display Relative Allele Frequencies
 This would perhaps be the best way to depict our data on the map, because it will show relative frequencies of both alleles at every given geographical position (i.e. population).
 
 First, let’s just draw one pie to see how it works. We can then apply the same principal to the remaining points on the map.
@@ -180,7 +180,7 @@ First, let’s just draw one pie to see how it works. We can then apply the same
 ```
 ![World_Map_Pie](/plots/World_Map_Pie.jpeg)
 
-# 3.6 Plot All Pie Charts Using `for{}` Loop
+## 3.6 Plot All Pie Charts Using `for{}` Loop
 In order to plot one pie chart per population of data, what we need to do essentially is to cycle through the code above for each row of our data frame `freq.df`. 
 
 ```
@@ -203,7 +203,7 @@ There are several important bits of information depicted in this plot.
 	3. The relative frequencies of the two alleles
 All we need to do now is to add a legend and then the plot is ready.
 
-# 3.7 Add Legend and Label Populations
+## 3.7 Add Legend and Label Populations
 ```
 map('worldHires', xlim=c(-120,142), ylim=c(-15,72), col='gray', fill=FALSE)
 > for (i in 1:26){
@@ -220,7 +220,7 @@ map('worldHires', xlim=c(-120,142), ylim=c(-15,72), col='gray', fill=FALSE)
 ```
 ![World_Map_Populations_Finish](plots/World_Map_Populations_Finish.jpeg)
 
-# 3.8 Save the Map Plot
+## 3.8 Save the Map Plot
 We can save the code in a script `plots.R` to run and edit it later.
 ```
 	pdf('WorldPie_Final2.pdf', width=10, height=7)
