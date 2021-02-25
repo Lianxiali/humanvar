@@ -131,8 +131,8 @@ We will add a main title for the plot.
 ```
 ![Scatterplots PCH COLOR Legend](plots/Scatterplots_PCH_COLOR_Legend.jpeg)
 
-#3. Plotting Data on Geographical Maps
-##3.1 Install/Load Packages
+# 3. Plotting Data on Geographical Maps
+## 3.1 Install/Load Packages
 ```
 > install.packages("maps")
 > install.packages("mapdata")
@@ -143,12 +143,12 @@ We will add a main title for the plot.
 > library(scales)
 > library(mapplots)
 > install.packages('maps')
-
-3.2 Draw World Map Layer
+```
+## 3.2 Draw World Map Layer
 ```
 > map('worldHires', xlim=c(-120,142), ylim=c(-12,72), col='gray', fill=FALSE)
 > box()
-
+```
 ![World Map Empty](plots/World_Map_Empty.jpeg)
 
 # 3.3 Plot Human Populations
@@ -158,7 +158,7 @@ We will plot the 26 human populations on this map using the geographical coordin
 > points(freq$long, freq$lat, pch=16, col="salmon")
 > box()
 ```
-![World_Map_Population](World_Map_Population.jpeg)
+![World_Map_Population](World_Map_Populations.jpeg)
 
 # 3.4 Adjust Point Size
 We could make this plot more informative if we linked the point size to allele frequency.
@@ -167,7 +167,7 @@ We could make this plot more informative if we linked the point size to allele f
 > points(freq$long, freq$lat, pch=16, cex=freq$Allele_A*1.5, col="Green")
 > box()
 ```
-![World_Map_Population_PointSize](plots/World_Map_Population_PointSize.jpeg)
+![World_Map_Population_PointSize](plots/World_Map_Populations_PointSize.jpeg)
 
 # 3.5 Using Pie Charts to Display Relative Allele Frequencies
 This would perhaps be the best way to depict our data on the map, because it will show relative frequencies of both alleles at every given geographical position (i.e. population).
