@@ -158,7 +158,7 @@ We will plot the 26 human populations on this map using the geographical coordin
 > points(freq$long, freq$lat, pch=16, col="salmon")
 > box()
 ```
-![World_Map_Population](World_Map_Populations.jpeg)
+<img src="plots/World_Map_Populations.jpeg" width="200" height="100">
 
 # 3.4 Adjust Point Size
 We could make this plot more informative if we linked the point size to allele frequency.
