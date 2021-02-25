@@ -186,16 +186,18 @@ In order to plot one pie chart per population of data, what we need to do essent
 ```
 > map('worldHires', xlim=c(-120,142), ylim=c(-15,72), col='gray', fill=FALSE)
 > for (i in 1:26){
-		add.pie(z=c(freq$Allele_A[i], freq$Allele_G[i]), x=freq$long[i], y=freq$lat[i], radius=freq$N_CHR[i]/100, col=c(alpha("orange", 0.6), alpha("blue", 0.6)), labels="")
-		i=i+1
-	}
+	add.pie(z=c(freq$Allele_A[i], freq$Allele_G[i]), 
+	x=freq$long[i], y=freq$lat[i], 
+	radius=freq$N_CHR[i]/100, col=c(alpha("orange", 0.6), 
+	alpha("blue", 0.6)), labels="")
+	i=i+1
+  }   
 > box()
 ```
 
-![World_Map_Populations_Pie_All](/plots/World_Map_Populations_Pie_All.jpg)
+![World_Map_Populations_Pie_All](/plots/World_Map_Populations_Pie_All.jpeg)
 
 There are several important bits of information depicted in this plot.
-
 	1. Geographical positions of populations
 	2. Size of the population under study (Pie circle size)
 	3. The relative frequencies of the two alleles
@@ -205,15 +207,18 @@ All we need to do now is to add a legend and then the plot is ready.
 ```
 map('worldHires', xlim=c(-120,142), ylim=c(-15,72), col='gray', fill=FALSE)
 > for (i in 1:26){
-	add.pie(z=c(freq$Allele_A[i], freq$Allele_G[i]), x=freq$long[i], y=freq$lat[i], radius=freq$N_CHR[i]/100, col=c(alpha("orange", 0.6), alpha("blue", 0.6)), labels="")
+	add.pie(z=c(freq$Allele_A[i], freq$Allele_G[i]), 
+	x=freq$long[i], y=freq$lat[i], 
+	radius=freq$N_CHR[i]/100, col=c(alpha("orange", 0.6), 
+	alpha("blue", 0.6)), labels="")
 	i=i+1
-	}
+  }
 > text(freq$long, freq$lat, labels=freq$superpop, cex=0.5, pos=1)
 > box()
 > legend('topright', bty='1', c("Freq. Allele A", "Freq. Allele G"), pch=16, col=c(alpha("orange", 0.6), alpha("blue", 0.6)), pt.cex=1, cex=0.7)
 > title(main="Global Distribution of rs1426654 Alleles", font.main=1, cex.main=0.9)
 ```
-![World_Map_Populations_Finish](plots/World_Map_Populations_Finish.jpg)
+![World_Map_Populations_Finish](plots/World_Map_Populations_Finish.jpeg)
 
 # 3.8 Save the Map Plot
 We can save the code in a script `plots.R` to run and edit it later.
@@ -221,7 +226,6 @@ We can save the code in a script `plots.R` to run and edit it later.
 	pdf('WorldPie_Final2.pdf', width=10, height=7)
 
 	map('worldHires', xlim=c(-120,142), ylim=c(-15,72), col='gray', fill=FALSE)
-
 
 	for (i in 1:26){
 		add.pie(z=c(freq$Allele_A[i], freq$Allele_G[i]), x=freq$long[i], y=freq$lat[i], 
